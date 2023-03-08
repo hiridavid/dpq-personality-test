@@ -35,7 +35,7 @@
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
-    line-height: 24px;    /* identical to box height */
+    line-height: 18px;    /* identical to box height */
     color: #000000;
 }
 
@@ -76,6 +76,7 @@ body{
 
 header{
     background:whitesmoke;
+    max-height: 300px;
 }
 
 .highlight{
@@ -96,22 +97,31 @@ details{
     background: #FFFFFF;
 }
 
-article>*{
-    width:100%;
-}
-
 article{
     background:whitesmoke;
 }
 
+article>label{
+    margin-bottom: 1rem;
+}
+
+article>*{
+    width:100%;
+}
+
+
+
 input[type="range"] {
     appearance: none;
-    width: 90%;
+    width: 96%;
     height: 18px;
-    margin:0 5% 0 5%;
+    margin: 0 auto 6px auto;
+    display:block;
     background: rgba(255, 255, 255, 0.6);
     border-radius: 9px;
-    background:linear-gradient(to right, var(--c-dark), var(--c-main))
+    background:linear-gradient(to right, var(--c-dark), var(--c-main));
+
+    touch-action:none;
     
 }
   

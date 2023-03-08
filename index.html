@@ -7,9 +7,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="src/favicon.ico" type="image/x-icon">
-    <title>Document</title>
+    <title>DPQ Personality Test</title>
 </head>
 <body>
+    <!-- HEADER counts score & holds title -->
     <header class="row align-items-center p-2 border-bottom border-secondary fixed-top shadow">
         <img class="col" src="src/logo-title.svg" alt="DPQ Personality Test">
         <div class="col d-flex justify-content-end">
@@ -31,80 +32,111 @@
             <p class="mb-0">Your <span class="highlight">results</span> are calculated automatically. We do not store any user data. Please screenshot your results (mobile) or download the webpage (Ctrl+S on PC) in order to save & share them.</p>
         </details>
 
-        <!-- <div class="accordion accordion-flush">
-            <div class="accordion-item">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                        Details
-                    </button>
-                </h2>
-                <div class="accordion-collapse collapse">
-                    <div class="accordion-body">
-                        <p>The <span class="highlight"><a href="https://gosling.psy.utexas.edu/scales-weve-developed/dog-personality-questionnaire-dpq/">DPQ Personality Test (test)</a></span> is an advanced behaviour test developed by Jones, A. C. and in collaboration with Amanda Jones in 2009 as a Ph.D. Thesis in the University of Texas, Austin. This online form (form), based on the test, was developed by Hiri Dávid in 2023 in Őrbottyán, Hungary. The form is a non-commercial modification of the test and can not accurately replace the original, only display a close approximation on a more user-friendly interface.</p>
-                        <p>Please <span class="highlight">adjust the slider</span> on each card to accurately represent how strongly you agree or disagree with the statement above regarding the subject of your form (yourself, or another person of choice).</p>
-                        <p>Your <span class="highlight">results</span> are calculated automatically. We do not store any user data. Please screenshot your results (mobile) or download the webpage (Ctrl+S on PC) in order to save & share them.</p>
-                    </div>
-                </div>
+        
+        <!-- TEMPLATE: (article.mb-2.py-2.px-3.border-top.border-bottom.border-secondary>label[for='input$$']{$. Question.}+div.d-flex.justify-content-between.font-TITLE>p.text-start{Strongly<br>Disagree}+p.text-end{Strongly<br>Agree}^input:range[name='score-input'][id='input$$'][min='1'][max='7'][value='4']) -->
+
+        
+        <article class="mb-2 py-2 px-3 border-top border-bottom border-secondary">
+            <p>0. Relaxed when greeting people.</p>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
             </div>
-        </div> -->
+            <input type="range" name="score-input" min="1" max="7" value="0">
+        </article>
 
-
-        <!-- <div class="accordion accordion-flush m-0 mt-3" id="accordion">
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="acc-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                        Details
-                    </button>
-                </h2>
-                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="acc-header" data-bs-parent="#accordion">
-                    <div class="accordion-body">
-                        <p>The <span class="highlight"><a href="https://gosling.psy.utexas.edu/scales-weve-developed/dog-personality-questionnaire-dpq/">DPQ Personality Test (test)</a></span> is an advanced behaviour test developed by Jones, A. C. and in collaboration with Amanda Jones in 2009 as a Ph.D. Thesis in the University of Texas, Austin. This online form (form), based on the test, was developed by Hiri Dávid in 2023 in Őrbottyán, Hungary. The form is a non-commercial modification of the test and can not accurately replace the original, only display a close approximation on a more user-friendly interface.</p>
-                        <p>Please <span class="highlight">adjust the slider</span> on each card to accurately represent how strongly you agree or disagree with the statement above regarding the subject of your form (yourself, or another person of choice).</p>
-                        <p>Your <span class="highlight">results</span> are calculated automatically. We do not store any user data. Please screenshot your results (mobile) or download the webpage (Ctrl+S on PC) in order to save & share them.</p>
-                    </div>
-                </div>
+        <article class="mb-2 py-2 px-3 border-top border-bottom border-secondary">
+            <label for="input01">1. Question.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
             </div>
-        </div> -->
-          
-        <article class="mb-2 p-2 border-top border-bottom border-secondary">
-            <p>1. Relaxed when greeting people.</p>
-            <input type="range" name="score-input" min="1" max="7" id="score-input">
+            <input type="range" name="score-input" id="input01" min="1" max="7" value="4">
+        </article>
+        <article class="mb-2 py-2 px-3 border-top border-bottom border-secondary">
+            <label for="input02">2. Question.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="input02" min="1" max="7" value="4">
+        </article>
+        <article class="mb-2 py-2 px-3 border-top border-bottom border-secondary">
+            <label for="input03">3. Question.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="input03" min="1" max="7" value="4">
+        </article>
+        <article class="mb-2 py-2 px-3 border-top border-bottom border-secondary">
+            <label for="input04">4. Question.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="input04" min="1" max="7" value="4">
+        </article>
+        <article class="mb-2 py-2 px-3 border-top border-bottom border-secondary">
+            <label for="input05">5. Question.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="input05" min="1" max="7" value="4">
+        </article>
+        <article class="mb-2 py-2 px-3 border-top border-bottom border-secondary">
+            <label for="input06">6. Question.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="input06" min="1" max="7" value="4">
+        </article>
+        <article class="mb-2 py-2 px-3 border-top border-bottom border-secondary">
+            <label for="input07">7. Question.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="input07" min="1" max="7" value="4">
+        </article>
+        <article class="mb-2 py-2 px-3 border-top border-bottom border-secondary">
+            <label for="input08">8. Question.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="input08" min="1" max="7" value="4">
+        </article>
+        <article class="mb-2 py-2 px-3 border-top border-bottom border-secondary">
+            <label for="input09">9. Question.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="input09" min="1" max="7" value="4">
+        </article>
+        <article class="mb-2 py-2 px-3 border-top border-bottom border-secondary">
+            <label for="input10">10. Question.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="input10" min="1" max="7" value="4">
+        </article>
+        <article class="mb-2 py-2 px-3 border-top border-bottom border-secondary">
+            <label for="input11">11. Question.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="input11" min="1" max="7" value="4">
         </article>
 
-        <article class="mb-2 p-2 border-top border-bottom border-secondary">
-            <p>2. behaves aggressively if disturbed or moved when resting.</p>
-            <input type="range" name="score-input" min="1" max="7" id="score-input">
-        </article>
 
-        <article class="mb-2 p-2 border-top border-bottom border-secondary">
-            <p>3. Aloof or indifferent towards dogs.</p>
-            <input type="range" name="score-input" min="1" max="7" id="score-input">
-        </article>
+        
 
-        <article class="mb-2 p-2 border-top border-bottom border-secondary">
-            <p>4. Destructive.</p>
-            <input type="range" name="score-input" min="1" max="7" id="score-input">
-        </article>
-
-        <article class="mb-2 p-2 border-top border-bottom border-secondary">
-            <p>5. Behaves aggressively toward dogs.</p>
-            <input type="range" name="score-input" min="1" max="7" id="score-input">
-        </article>
-
-        <article class="mb-2 p-2 border-top border-bottom border-secondary">
-            <p>6. Anxious.</p>
-            <input type="range" name="score-input" min="1" max="7" id="score-input">
-        </article>
-
-
-
-        <article class="mb-2"><img src="src/question-mockup.png" alt=""></article>
-        <article class="mb-2"><img src="src/question-mockup.png" alt=""></article>
-        <article class="mb-2"><img src="src/question-mockup.png" alt=""></article>
-        <article class="mb-2"><img src="src/question-mockup.png" alt=""></article>
-        <article class="mb-2"><img src="src/question-mockup.png" alt=""></article>
-        <article class="mb-2"><img src="src/question-mockup.png" alt=""></article>
-        <article class="mb-2"><img src="src/question-mockup.png" alt=""></article>
         
     </section>
     <script src="script.js"></script>
