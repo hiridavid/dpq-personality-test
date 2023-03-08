@@ -24,26 +24,89 @@
             <img class="col-6" src="src/logo-title.svg" alt="">
         </div>
 
-        <details class="p-2">
-            <p>The <span class="highlight"><a href="https://gosling.psy.utexas.edu/scales-weve-developed/dog-personality-questionnaire-dpq/">DPQ Personality Test (test)</a></span> is an advanced behaviour test developed by Jones, A. C. and in collaboration with Amanda Jones in 2009 as a Ph.D. Thesis in the University of Texas, Austin. This online form (form), based on the test, was developed by Hiri Dávid in 2023 in Őrbottyán, Hungary. The form is a non-commercial modification of the test and can not accurately replace the original, only display a close approximation on a more user-friendly interface.</p>
+        <details class="p-3 mt-3 mb-2">
+            <summary>Welcome!</summary>
+            <p>The <span class="highlight"><a href="https://gosling.psy.utexas.edu/scales-weve-developed/dog-personality-questionnaire-dpq/">DPQ Personality Test (test)</a></span> is an advanced behaviour test developed by Jones, A. C. and in collaboration with Amanda Jones in 2009 as a Ph.D. Thesis in the University of Texas, Austin. This online form (form), based on the test, was developed by Hiri Dávid in 2023 in Örbottyán, Hungary. The form is a non-commercial modification of the test and can not accurately replace the original, only display a close approximation on a more user-friendly interface.</p>
             <p>Please <span class="highlight">adjust the slider</span> on each card to accurately represent how strongly you agree or disagree with the statement above regarding the subject of your form (yourself, or another person of choice).</p>
-            <p>Your <span class="highlight">results</span> are calculated automatically. We do not store any user data. Please screenshot your results (mobile) or download the webpage (Ctrl+S on PC) in order to save & share them.</p>
-
+            <p class="mb-0">Your <span class="highlight">results</span> are calculated automatically. We do not store any user data. Please screenshot your results (mobile) or download the webpage (Ctrl+S on PC) in order to save & share them.</p>
         </details>
 
-        <article>
-            <img src="src/question-mockup.png" alt="">
+        <!-- <div class="accordion accordion-flush">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        Details
+                    </button>
+                </h2>
+                <div class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                        <p>The <span class="highlight"><a href="https://gosling.psy.utexas.edu/scales-weve-developed/dog-personality-questionnaire-dpq/">DPQ Personality Test (test)</a></span> is an advanced behaviour test developed by Jones, A. C. and in collaboration with Amanda Jones in 2009 as a Ph.D. Thesis in the University of Texas, Austin. This online form (form), based on the test, was developed by Hiri Dávid in 2023 in Őrbottyán, Hungary. The form is a non-commercial modification of the test and can not accurately replace the original, only display a close approximation on a more user-friendly interface.</p>
+                        <p>Please <span class="highlight">adjust the slider</span> on each card to accurately represent how strongly you agree or disagree with the statement above regarding the subject of your form (yourself, or another person of choice).</p>
+                        <p>Your <span class="highlight">results</span> are calculated automatically. We do not store any user data. Please screenshot your results (mobile) or download the webpage (Ctrl+S on PC) in order to save & share them.</p>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+
+        <!-- <div class="accordion accordion-flush m-0 mt-3" id="accordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="acc-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        Details
+                    </button>
+                </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="acc-header" data-bs-parent="#accordion">
+                    <div class="accordion-body">
+                        <p>The <span class="highlight"><a href="https://gosling.psy.utexas.edu/scales-weve-developed/dog-personality-questionnaire-dpq/">DPQ Personality Test (test)</a></span> is an advanced behaviour test developed by Jones, A. C. and in collaboration with Amanda Jones in 2009 as a Ph.D. Thesis in the University of Texas, Austin. This online form (form), based on the test, was developed by Hiri Dávid in 2023 in Őrbottyán, Hungary. The form is a non-commercial modification of the test and can not accurately replace the original, only display a close approximation on a more user-friendly interface.</p>
+                        <p>Please <span class="highlight">adjust the slider</span> on each card to accurately represent how strongly you agree or disagree with the statement above regarding the subject of your form (yourself, or another person of choice).</p>
+                        <p>Your <span class="highlight">results</span> are calculated automatically. We do not store any user data. Please screenshot your results (mobile) or download the webpage (Ctrl+S on PC) in order to save & share them.</p>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+          
+        <article class="mb-2 p-2 border-top border-bottom border-secondary">
+            <p>1. Relaxed when greeting people.</p>
+            <input type="range" name="score-input" min="1" max="7" id="score-input">
         </article>
-        <article><img src="src/question-mockup.png" alt=""></article>
-        <article><img src="src/question-mockup.png" alt=""></article>
-        <article><img src="src/question-mockup.png" alt=""></article>
-        <article><img src="src/question-mockup.png" alt=""></article>
-        <article><img src="src/question-mockup.png" alt=""></article>
-        <article><img src="src/question-mockup.png" alt=""></article>
-        <article><img src="src/question-mockup.png" alt=""></article>
+
+        <article class="mb-2 p-2 border-top border-bottom border-secondary">
+            <p>2. behaves aggressively if disturbed or moved when resting.</p>
+            <input type="range" name="score-input" min="1" max="7" id="score-input">
+        </article>
+
+        <article class="mb-2 p-2 border-top border-bottom border-secondary">
+            <p>3. Aloof or indifferent towards dogs.</p>
+            <input type="range" name="score-input" min="1" max="7" id="score-input">
+        </article>
+
+        <article class="mb-2 p-2 border-top border-bottom border-secondary">
+            <p>4. Destructive.</p>
+            <input type="range" name="score-input" min="1" max="7" id="score-input">
+        </article>
+
+        <article class="mb-2 p-2 border-top border-bottom border-secondary">
+            <p>5. Behaves aggressively toward dogs.</p>
+            <input type="range" name="score-input" min="1" max="7" id="score-input">
+        </article>
+
+        <article class="mb-2 p-2 border-top border-bottom border-secondary">
+            <p>6. Anxious.</p>
+            <input type="range" name="score-input" min="1" max="7" id="score-input">
+        </article>
+
+
+
+        <article class="mb-2"><img src="src/question-mockup.png" alt=""></article>
+        <article class="mb-2"><img src="src/question-mockup.png" alt=""></article>
+        <article class="mb-2"><img src="src/question-mockup.png" alt=""></article>
+        <article class="mb-2"><img src="src/question-mockup.png" alt=""></article>
+        <article class="mb-2"><img src="src/question-mockup.png" alt=""></article>
+        <article class="mb-2"><img src="src/question-mockup.png" alt=""></article>
+        <article class="mb-2"><img src="src/question-mockup.png" alt=""></article>
         
     </section>
-
-    <script type="module" src="main.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
