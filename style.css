@@ -99,10 +99,21 @@ details{
 
 article{
     background:whitesmoke;
+    position: relative;
 }
 
 article>label{
     margin-bottom: 1rem;
+}
+
+article>img{
+    position: absolute;
+    height: 42px;
+    width: 42px;
+    left: calc(50% - 42px/2);
+    bottom: 2px;
+    pointer-events:none;
+    display: default;
 }
 
 article>*{
@@ -126,17 +137,33 @@ input[type="range"] {
 }
   
 input[type="range"]::-webkit-slider-thumb, input[type="range"]::-moz-range-thumb {
-    appearance: none;
+    /* appearance: none;
+    width:0;
+    height:0;
+    border-style: none; */
+    
+    /* appearance: none;
     height: 42px;
     width: 42px;
     border-radius: 50%;
     background: url("src/slider-head.png");
     background-color: rgba(249, 172, 57, 0.29);
     border:none;
+    cursor: ew-resize; */
+
+    appearance: none;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background: magenta;
+    border:none;
     cursor: ew-resize;
-    /* box-shadow: 0 0 2px 0 #555; */
-    
-  }
+
+}
+
+
+
+
   
 /*
 input[type=range]::-webkit-slider-runnable-track  {

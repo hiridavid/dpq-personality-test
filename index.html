@@ -33,17 +33,10 @@
         </details>
 
         
-        <!-- TEMPLATE: (article.mb-2.py-2.px-3.border-top.border-bottom.border-secondary>label[for='input$$']{$. Question.}+div.d-flex.justify-content-between.font-TITLE>p.text-start{Strongly<br>Disagree}+p.text-end{Strongly<br>Agree}^input:range[name='score-input'][id='input$$'][min='1'][max='7'][value='4']) -->
+        <!-- TEMPLATE: (article.mb-2.py-2.px-3.border-top.border-bottom.border-secondary>label[for='input$']{$. Question.}+div.d-flex.justify-content-between.font-TITLE>p.text-start{Strongly<br>Disagree}+p.text-end{Strongly<br>Agree}^input:range[name='score-input'][id='input$'][min='1'][max='7'][value='4']) -->
 
         
-        <article class="mb-2 py-2 px-3 border-top border-bottom border-secondary">
-            <p>0. Relaxed when greeting people.</p>
-            <div class="d-flex justify-content-between font-TITLE">
-                <p class="text-start">Strongly<br>Disagree</p>
-                <p class="text-end">Strongly<br>Agree</p>
-            </div>
-            <input type="range" name="score-input" min="1" max="7" value="0">
-        </article>
+        
 
         <article class="mb-2 py-2 px-3 border-top border-bottom border-secondary">
             <label for="input01">1. Question.</label>
@@ -52,7 +45,10 @@
                 <p class="text-end">Strongly<br>Agree</p>
             </div>
             <input type="range" name="score-input" id="input01" min="1" max="7" value="4">
+            <img src="src/slider-head.png" alt="Slider thumb">
         </article>
+
+
         <article class="mb-2 py-2 px-3 border-top border-bottom border-secondary">
             <label for="input02">2. Question.</label>
             <div class="d-flex justify-content-between font-TITLE">
