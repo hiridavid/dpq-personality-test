@@ -20,15 +20,17 @@ console.log(questions);
 
 let thumbs = document.querySelectorAll("article>img");
 
-questions.addEventListener(input, e=>{
+questions[1].addEventListener("input", e=>{
     thumbs.x=e.x;
     thumbs.y=e.y;
-})
+});
 
 
 /* display */
 
-
+questions[1].addEventListener("input", e=>{
+    console.log(e.value);
+});
 
 /* score */
 
@@ -38,8 +40,9 @@ function scoreHandler(){
     scoreObj.innerHTML = `${score}/75`
 }
 
-/* eval */
+/* test eval */
 
 function Rev(n){
     return 8-n
 }
+
