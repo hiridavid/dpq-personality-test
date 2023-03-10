@@ -100,6 +100,7 @@ details{
 article{
     background:whitesmoke;
     position: relative;
+    padding-bottom: 2.5rem;
 }
 
 article>label{
@@ -116,6 +117,26 @@ article>img{
     display: default;
 }
 
+article>hr{
+    border: none;
+    width: calc(90% - 24px);
+    height: 18px;
+
+    position: absolute;
+    bottom: 1rem;
+
+    left: 0; 
+    right: 0;
+    margin: 0 auto 6px auto;
+
+    border-radius: 9px;
+    background:linear-gradient(to right, var(--c-dark), var(--c-main));
+    opacity:1;
+    
+    pointer-events: none;
+    z-index: 0;
+}
+
 article>*{
     width:100%;
 }
@@ -124,16 +145,20 @@ article>*{
 
 input[type="range"] {
     appearance: none;
-    width: 96%;
+    width: 90%;
     height: 18px;
-    margin: 0 auto 6px auto;
-    display:block;
-    background: rgba(255, 255, 255, 0.6);
-    border-radius: 9px;
-    background:linear-gradient(to right, var(--c-dark), var(--c-main));
 
-    touch-action:none;
+    left: 0; 
+    right: 0;
+    margin: 0 auto 6px auto;
     
+    border-radius: 9px;
+    background:none;
+    opacity: .5;
+    
+    touch-action:none;
+    position:absolute;
+    z-index:1;
 }
   
 input[type="range"]::-webkit-slider-thumb, input[type="range"]::-moz-range-thumb {
@@ -142,23 +167,25 @@ input[type="range"]::-webkit-slider-thumb, input[type="range"]::-moz-range-thumb
     height:0;
     border-style: none; */
     
-    /* appearance: none;
+    appearance: none;
     height: 42px;
     width: 42px;
     border-radius: 50%;
     background: url("src/slider-head.png");
     background-color: rgba(249, 172, 57, 0.29);
     border:none;
-    cursor: ew-resize; */
+    cursor: ew-resize;
+    position:absolute;
+    z-index:1;
 
-    appearance: none;
-    height: 50px;
-    width: 50px;
+    /* appearance: none;
+    height: 18px;
+    width: 18px;
     border-radius: 50%;
     background: magenta;
     border:none;
     cursor: ew-resize;
-
+    */
 }
 
 
