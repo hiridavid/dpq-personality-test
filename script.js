@@ -28,9 +28,9 @@ questions[1].addEventListener("input", e=>{
 
 /* display */
 
-questions[1].addEventListener("input", e=>{
+/* questions[1].addEventListener("input", e=>{
     console.log(e.value);
-});
+}); */
 
 /* score */
 
