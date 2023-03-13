@@ -98,11 +98,24 @@ details{
     background: snow;
 }
 
+details[open] summary ~ * {
+    animation: sweep .5s ease-out;
+}
+  
+@keyframes sweep {
+    0%    {opacity: 0; margin-left: -10px; margin-right: 10px}
+    100%  {opacity: 1; margin-left: 0; margin-right: 0}
+}
+
 article{
     background:var(--c-light);
     position: relative;
     padding-bottom: 2.5rem;
+
+    animation:forwards .5s ease-out;
 }
+
+
 
 article>label{
     margin-bottom: 1rem;
