@@ -155,8 +155,6 @@ article>*{
     width:100%;
 }
 
-
-
 input[type="range"] {
     appearance: none;
     width: 90%;
@@ -206,16 +204,15 @@ input[type="range"]::-webkit-slider-thumb, input[type="range"]::-moz-range-thumb
     */
 }
 
-
-
-
-
-  
 /*
 input[type=range]::-webkit-slider-runnable-track  {
     appearance: none;
     box-shadow: none;
     border: none;
     background: transparent;
-  } */
-  
+} */
+
+
+#resultsBox{
+    background: var(--c-light)
+}
