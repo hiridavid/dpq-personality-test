@@ -64,7 +64,7 @@ function scoreHandler(){
     scoreObj.innerHTML = `${score}/75`
 
     if (score>=75) getResults(questions);
-    if (score>=5) {
+    if (score>=60) {
         let untouchedArr = [];
         for (let i = 1; i < questions.length; i++) {
             if (!questions[i].touched) untouchedArr.push(i);
