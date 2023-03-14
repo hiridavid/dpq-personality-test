@@ -64,23 +64,20 @@ function scoreHandler(){
     scoreObj.innerHTML = `${score}/75`
 
     if (score>=75) getResults(questions);
-    if (score>=60) {
+    if (score>=5) {
         let untouchedArr = [];
         for (let i = 1; i < questions.length; i++) {
             if (!questions[i].touched) untouchedArr.push(i);
         }
         if (untouchedArr.length > 2) {
             hintBox.style.display = "block";
-            hint.innerHTML = `Answers ${untouchedArr.slice(0, untouchedArr.length-1).join(', ')} & ${untouchedArr.pop()} are missing.<br>
-            Please touch the sliders to register an answer, even if it is in the correct position.`;
+            hint.innerHTML = `Answers ${untouchedArr.slice(0, untouchedArr.length-1).join(', ')} & ${untouchedArr.pop()} are missing.`;
         } else if (untouchedArr.length === 2) {
             hintBox.style.display = "block";
-            hint.innerHTML = `Answers ${untouchedArr[0]} & ${untouchedArr[1]} are missing.<br>
-            Please touch the sliders to register an answer, even if it is in the correct position.`;
+            hint.innerHTML = `Answers ${untouchedArr[0]} & ${untouchedArr[1]} are missing.`;
         } else if (untouchedArr.length === 1) {
             hintBox.style.display = "block";
-            hint.innerHTML = `Answer ${untouchedArr[0]} is missing.<br>
-            Please touch the slider to register an answer, even if it is in the correct position.`;
+            hint.innerHTML = `Answer ${untouchedArr[0]} is missing.`;
         } else {
             hintBox.style.display = "none";
         }
