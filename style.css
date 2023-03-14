@@ -216,3 +216,13 @@ input[type=range]::-webkit-slider-runnable-track  {
 #resultsBox{
     background: var(--c-light)
 }
+
+#hint{
+    display: none;
+    font-style:italic;
+    margin-top:0;
+}
+
+#hint>span{
+    color: var(--c-main);
+}

@@ -27,29 +27,35 @@ inputs.forEach((element, i) => {
 
 console.log(questions)
 
-resultParagraph = document.querySelector("div#resultsBox>p");
+resultParagraph = document.querySelector("div#resultsBox>p#results");
 
+console.log(resultParagraph.innerHTML);
+
+let hintBox = document.querySelector("#hint");
+let hint = document.querySelector("#hint>span");
 
 /* display */
-
-
-
-
 
 /* questions[1].addEventListener("input", e=>{
     console.log(e.value);
 }); */
 
-/* score */
+
+
+
+
+/* feedback */
 
 for (let i = 1; i < questions.length; i++) {
     questions[i].inputObj.addEventListener("click", function(){
         questions[i].touched=true;
+        console.log(`${questions[i].index}. Question: ${(questions[i].touched) ? "touched" : "untouched"};`)
         scoreHandler();
     });
 }
 
 let scoreObj = document.getElementById("score");
+
 function scoreHandler(){
     let score = 0;
     for (let i = 1; i < questions.length; i++) {
@@ -57,46 +63,38 @@ function scoreHandler(){
     }
     scoreObj.innerHTML = `${score}/75`
 
-    if (score<=75) getResults(questions);
+    if (score>=75) getResults(questions);
+    if (score>=60) {
+        let untouchedArr = [];
+        for (let i = 1; i < questions.length; i++) {
+            if (!questions[i].touched) untouchedArr.push(i);
+        }
+        if (untouchedArr.length > 2) {
+            hintBox.style.display = "block";
+            hint.innerHTML = `Answers ${untouchedArr.slice(0, untouchedArr.length-1).join(', ')} & ${untouchedArr.pop()} are missing.<br>
+            Please touch the sliders to register an answer, even if it is in the correct position.`;
+        } else if (untouchedArr.length === 2) {
+            hintBox.style.display = "block";
+            hint.innerHTML = `Answers ${untouchedArr[0]} & ${untouchedArr[1]} are missing.<br>
+            Please touch the sliders to register an answer, even if it is in the correct position.`;
+        } else if (untouchedArr.length === 1) {
+            hintBox.style.display = "block";
+            hint.innerHTML = `Answer ${untouchedArr[0]} is missing.<br>
+            Please touch the slider to register an answer, even if it is in the correct position.`;
+        } else {
+            hintBox.style.display = "none";
+        }
+        
+    }
 }
+
+
 
 /* test eval */
 
 function getResults(q){
-    const results = {
-        fearfullness: {
-            fearOfPeople: getSum("R1", 12, 30, 47, 54, q),
-            nonsocialFear: getSum(6, "R19", 24, "R38", "R58"),
-            fearOfDogs: getSum("r9", 21, 36, 66, 70),
-            fearOfHandling: getSum(28, 32, 42, 61, 74),
-            /* localScore: (fearOfPeople + nonsocialFear + fearOfDogs + fearOfHandling) /4 */
-        },
-        aggressionTowardsPeople: {
-            generalAggression: getSum(13, 23, "R33", 68, 73),
-            situationalAggression: getSum(2, 17, 43, 51, 62),
-            /* localScore: (generalAggression + situationalAggression) /2 */
-        },
-        activityOrExcitability: {
-            excitability: getSum(27, 53, 55, "R69", 72),
-            playfulness: getSum("R3", "R16", 31, 46, 59),
-            activeEngagement: getSum("R10", 14, 25, 40, 48),
-            companionability: getSum(7, 35, "R44", 63, 67),
-            /* localScore: (excitability + playfulness + activeEngagement + companionability) /4 */
-        },
-        responsivenessToTraining: {
-            trainability: getSum(37, "R45", "R50", "R64", 71),
-            controllability: getSum("R4", 11, "R18", "R29", 56),
-            /* localScore: (trainability + controllability) /2 */
-        },
-        aggressionTowardsAnimals: {
-            aggressionTowardsDogs: getSum(5, 8, "R34", 57, "R60"),
-            preyDrive: getSum(15, 22, 26, 39, 65),
-            dominanceOverDogs: getSum(20, 41, "R49", 52, 75),
-            /* localScore:  (aggressionTowardsDogs + preyDrive + dominanceOverDogs) /3 */
-        }
-    }
 
-    function R(n){
+    function Reverse(n){
         return 8-n
     }
 
@@ -109,7 +107,7 @@ function getResults(q){
                 if (typeof array[2] === typeof 0) {
                     array[1] = array[1] + array[2];
                 }
-                return R(q[parseInt(array[1])].val);
+                return Reverse(q[parseInt(array[1])].val);
             } else {
                 return undefined;
             }
@@ -124,9 +122,73 @@ function getResults(q){
         n5 = getVal(q5);
         return (n1+n2+n3+n4+n5)/(35)
     }
-    console.log(((R(q[1].val)+q[12].val+q[30].val+q[47].val+q[54].val)/(35))===(getSum("R1", 12, 30, 47, 54, q)));
-    console.log(results);
-    resultParagraph.innerHTML = "Fear of People: " + Math.round(results.fearfullness.fearOfPeople*100) + "%";
-}
 
-getResults(questions);
+    const results = {
+        fearfullness: {
+            fearOfPeople: getSum("R1", 12, 30, 47, 54, q),
+            nonsocialFear: getSum(6, "R19", 24, "R38", "R58"),
+            fearOfDogs: getSum("r9", 21, 36, 66, 70),
+            fearOfHandling: getSum(28, 32, 42, 61, 74),
+            localScore: undefined
+        },
+        aggressionTowardsPeople: {
+            generalAggression: getSum(13, 23, "R33", 68, 73),
+            situationalAggression: getSum(2, 17, 43, 51, 62),
+            localScore: undefined
+        },
+        activityOrExcitability: {
+            excitability: getSum(27, 53, 55, "R69", 72),
+            playfulness: getSum("R3", "R16", 31, 46, 59),
+            activeEngagement: getSum("R10", 14, 25, 40, 48),
+            companionability: getSum(7, 35, "R44", 63, 67),
+            localScore: undefined
+        },
+        responsivenessToTraining: {
+            trainability: getSum(37, "R45", "R50", "R64", 71),
+            controllability: getSum("R4", 11, "R18", "R29", 56),
+            localScore: undefined
+        },
+        aggressionTowardsAnimals: {
+            aggressionTowardsDogs: getSum(5, 8, "R34", 57, "R60"),
+            preyDrive: getSum(15, 22, 26, 39, 65),
+            dominanceOverDogs: getSum(20, 41, "R49", 52, 75),
+            localScore: undefined
+        }
+    }
+
+    results.fearfullness.localScore = (results.fearfullness.fearOfPeople + results.fearfullness.nonsocialFear + results.fearfullness.fearOfDogs + results.fearfullness.fearOfHandling) /4;
+    results.aggressionTowardsPeople.localScore = (results.aggressionTowardsPeople.generalAggression + results.aggressionTowardsPeople.situationalAggression) /2;
+    results.activityOrExcitability.localScore = (results.activityOrExcitability.excitability + results.activityOrExcitability.playfulness + results.activityOrExcitability.activeEngagement + results.activityOrExcitability.companionability) /4;
+    results.responsivenessToTraining.localScore = (results.responsivenessToTraining.trainability + results.responsivenessToTraining.controllability) /2;
+    results.aggressionTowardsAnimals.localScore = (results.aggressionTowardsAnimals.aggressionTowardsDogs + results.aggressionTowardsAnimals.preyDrive + results.aggressionTowardsAnimals.dominanceOverDogs) /3;
+
+    function display(result){
+        return Math.round(result*100) + "%<br>"
+    }
+    
+    console.log(((Reverse(q[1].val)+q[12].val+q[30].val+q[47].val+q[54].val)/(35))===(getSum("R1", 12, 30, 47, 54, q)));
+    console.log(results);
+
+
+    resultParagraph.innerHTML =
+    "Fearfullness — " + display(results.fearfullness.localScore) +
+    " Fear of People: " + display(results.fearfullness.fearOfPeople) +
+    " Non-social Fear: " + display(results.fearfullness.nonsocialFear) +
+    " Fear of Dogs: " + display(results.fearfullness.fearOfDogs) +
+    " Fear of Handling: " + display(results.fearfullness.fearOfHandling) +
+    "<br>Aggression towards People — " + display(results.aggressionTowardsPeople.localScore) +
+    " General Aggression: " + display(results.aggressionTowardsPeople.generalAggression) +
+    " Situational Aggression: " + display(results.aggressionTowardsPeople.situationalAggression) +
+    "<br>Activity & Excitability — " + display(results.activityOrExcitability.localScore) +
+    " Excitability: " + display(results.activityOrExcitability.excitability) +
+    " Playfullness: " + display(results.activityOrExcitability.playfulness) +
+    " Active Engagement: " + display(results.activityOrExcitability.activeEngagement) +
+    " Companionability: " + display(results.activityOrExcitability.companionability) +
+    "<br>Responsiveness to Training — " + display(results.responsivenessToTraining.localScore) +
+    " Trainability: " + display(results.responsivenessToTraining.trainability) +
+    " Controllability: " + display(results.responsivenessToTraining.controllability) +
+    "<br>Aggression towards Animals — " + display(results.aggressionTowardsAnimals.localScore) +
+    " Aggression towards Dogs: " + display(results.aggressionTowardsAnimals.aggressionTowardsDogs) +
+    " Prey Drive: " + display(results.aggressionTowardsAnimals.preyDrive) +
+    " Dominance over Dogs: " + display(results.aggressionTowardsAnimals.dominanceOverDogs);
+}
