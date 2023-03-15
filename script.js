@@ -32,15 +32,51 @@ inputs.forEach((element, i) => {
 
 console.log(questions)
 
+/* UX */
+
+document.addEventListener("swiped", (swipe)=>{
+    console.log(swipe.target);
+});
+
+let touchY = undefined;
+let touchX = undefined;
+let swipeTreshold = 50;
+let target = undefined;
+//---event listener for mobile touches
+window.addEventListener("touchstart", e => {
+    touchY = e.changedTouches[0].pageY;    //sets the x position on page of touch event to a var
+    touchX = e.changedTouches[0].pageX;    //sets the y position on page of touch event to a var
+    target = e.target;
+    console.log(target);
+    console.log(`(X: ${touchX}, Y: ${touchY})`);
+})
+
+//---event listener for swipes (change of touch position)
+window.addEventListener("touchmove", e => {
+    if (target.name==="score-input") {
+        const swipedY = Math.abs(e.changedTouches[0].pageY - touchY); //the Y distance between the original touch and your finger now
+        const swipedX = Math.abs(e.changedTouches[0].pageX - touchX); //the X distance between the original touch and your finger now
+        if (swipedY > swipedX) {
+            target.style.pointerEvents = "none";
+            id = parseInt(target.id.split("").splice(5, 7).join(""));
+            questions[id].touched = false;
+        }
+    }
+})
+
+//---event listener for ending a touch
+window.addEventListener("touchend", e => {
+    target.style.pointerEvents = "";
+    touchY = undefined;
+    touchX = undefined;
+    target = undefined;
+})
+
 /* display */
 
 /* questions[1].addEventListener("input", e=>{
     console.log(e.value);
 }); */
-
-
-
-
 
 /* feedback */
 

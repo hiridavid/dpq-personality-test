@@ -1,7 +1,12 @@
 :root{
     --c-main: #F9AC39;
+    --c-inv: #0653c6;
+    --c-inv-subtle: #042557;
     --c-dark: #2C1B02;
+    --c-dark-subtle: #492d03;
     --c-light: white;
+    --c-highlight: #855b00;
+
     --thumb: 60px;
     --track: 36px;
     --thumb-url: url("src/slider-head-x60.png");
@@ -23,7 +28,7 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 20px;
-    color: #000000;
+    color: var(--c-dark-subtle);
 }
 
 /* TITLE latin */
@@ -41,7 +46,7 @@
     font-weight: 400;
     font-size: 24px;
     line-height: 18px;    /* line spacing, 3/4 of font size */
-    color: #000000;
+    color: var(--c-dark);
 }
 
 @media screen and (min-width: 992px) {
@@ -94,12 +99,12 @@ header{
 }
 
 span>a{
-    text-decoration: none;
+    text-decoration: underline;
     color: var(--c-main);
 }
 
 span>a:hover{
-    text-decoration: underline;
+    color: var(--c-inv);
 }
 
 details{
@@ -122,8 +127,6 @@ article{
 
     animation:forwards .5s ease-out;
 }
-
-
 
 article>label{
     margin-bottom: 1rem;
@@ -158,6 +161,14 @@ article>hr{
     pointer-events: none;
     z-index: 0;
 }
+
+/* article>div>p.text-start{
+    color: var(--c-inv-subtle);
+}
+
+article>div>p.text-end{
+    color: var(--c-inv);
+} */
 
 article>*{
     width:100%;
