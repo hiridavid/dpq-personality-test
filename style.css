@@ -40,8 +40,19 @@
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
-    line-height: 18px;    /* identical to box height */
+    line-height: 18px;    /* line spacing, 3/4 of font size */
     color: #000000;
+}
+
+@media screen and (min-width: 992px) {
+    .font-TITLE{
+        font-size: 36px;
+        line-height: 27px;    /* line spacing */
+    }
+    .font-DEFAULT{
+        font-size: 1.5rem;
+        line-height: 1.8rem;
+    }
 }
 
 /* LOGO latin */
@@ -70,13 +81,6 @@ html, body {
 
 body{
     background: var(--c-main);
-
-    font-family: 'Hammersmith One';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 20px;
-    color: #000000;
 }
 
 header{

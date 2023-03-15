@@ -9,7 +9,12 @@
 /* Init */
 
 const inputs = document.getElementsByName("score-input");
+const scoreObj = document.getElementById("score");
+const resultParagraph = document.querySelector("div#resultsBox>p#results");
+const hintBox = document.querySelector("#hint");
+const hint = document.querySelector("#hint>span");
 let questions = [undefined];
+
 console.log(inputs);
 
 class Question {
@@ -26,13 +31,6 @@ inputs.forEach((element, i) => {
 });
 
 console.log(questions)
-
-resultParagraph = document.querySelector("div#resultsBox>p#results");
-
-console.log(resultParagraph.innerHTML);
-
-let hintBox = document.querySelector("#hint");
-let hint = document.querySelector("#hint>span");
 
 /* display */
 
@@ -52,9 +50,12 @@ for (let i = 1; i < questions.length; i++) {
         console.log(`${questions[i].index}. Question: ${(questions[i].touched) ? "touched" : "untouched"};`)
         scoreHandler();
     });
+    questions[i].inputObj.addEventListener("touchend", function(){
+        questions[i].touched=true;
+        console.log(`${questions[i].index}. Question: ${(questions[i].touched) ? "touched" : "untouched"};`)
+        scoreHandler();
+    });
 }
-
-let scoreObj = document.getElementById("score");
 
 function scoreHandler(){
     let score = 0;
