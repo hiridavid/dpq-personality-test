@@ -2,6 +2,10 @@
     --c-main: #F9AC39;
     --c-dark: #2C1B02;
     --c-light: white;
+    --thumb: 60px;
+    --track: 36px;
+    --thumb-url: url("src/slider-head-x60.png");
+
 }
 
 /* DEFAULT latin */
@@ -110,7 +114,7 @@ details[open] summary ~ * {
 article{
     background:var(--c-light);
     position: relative;
-    padding-bottom: 2.5rem;
+    padding-bottom: 5.5rem;
 
     animation:forwards .5s ease-out;
 }
@@ -121,7 +125,7 @@ article>label{
     margin-bottom: 1rem;
 }
 
-article>img{
+/* article>img{
     position: absolute;
     height: 42px;
     width: 42px;
@@ -129,21 +133,21 @@ article>img{
     bottom: 2px;
     pointer-events:none;
     display: default;
-}
+} */
 
 article>hr{
     border: none;
-    width: calc(90% - 24px);
-    height: 18px;
+    width: calc(90% + var(--track) - var(--thumb));
+    height: var(--track);
 
     position: absolute;
-    bottom: 1rem;
+    bottom: 2rem;
 
     left: 0; 
     right: 0;
     margin: 0 auto 6px auto;
 
-    border-radius: 9px;
+    border-radius: 18px;
     background:linear-gradient(to right, var(--c-dark), var(--c-main));
     opacity:1;
     
@@ -159,13 +163,13 @@ input[type="range"] {
     -webkit-appearance: none;
     appearance: none;
     width: 90%;
-    height: 18px;
+    height: var(--track);
 
     left: 0; 
     right: 0;
-    margin: 0 auto 6px auto;
+    margin: 14px auto 14px auto;
     
-    border-radius: 9px;
+    border-radius: 18px;
     background: none;
     opacity: .5;
     
@@ -179,20 +183,20 @@ input[type="range"] {
 input[type="range"]::-webkit-slider-thumb{
     -webkit-appearance: none; /* Override default look */
     appearance: none;
-    height: 42px;
-    width: 42px;
+    height: var(--thumb);
+    width: var(--thumb);
     border-radius: 50%;
-    background: url("src/slider-head.png");
+    background: var(--thumb-url);
     background-color: rgba(249, 172, 57, 0.29);
     cursor: ew-resize;
 }
 
 input[type="range"]::-moz-range-thumb {
     appearance: none;
-    height: 42px;
-    width: 42px;
+    height: var(--thumb);
+    width: var(--thumb);
     border-radius: 50%;
-    background: url("src/slider-head.png");
+    background: var(--thumb-url);
     background-color: rgba(249, 172, 57, 0.29);
     border: none;
     cursor: ew-resize;
