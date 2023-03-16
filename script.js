@@ -34,10 +34,6 @@ console.log(questions)
 
 /* UX */
 
-document.addEventListener("swiped", (swipe)=>{
-    console.log(swipe.target);
-});
-
 let touchY = undefined;
 let touchX = undefined;
 let swipeTreshold = 50;
@@ -58,8 +54,8 @@ window.addEventListener("touchmove", e => {
         const swipedX = Math.abs(e.changedTouches[0].pageX - touchX); //the X distance between the original touch and your finger now
         if (swipedY > swipedX) {
             target.style.pointerEvents = "none";
-            id = parseInt(target.id.split("").splice(5, 7).join(""));
-            questions[id].touched = false;
+            /* id = parseInt(target.id.split("").splice(5, 7).join(""));
+            questions[id].touched = false; */
         }
     }
 })
@@ -83,7 +79,7 @@ window.addEventListener("touchend", e => {
 for (let i = 1; i < questions.length; i++) {
     questions[i].inputObj.addEventListener("click", function(){
         questions[i].touched=true;
-        console.log(`${questions[i].index}. Question: ${(questions[i].touched) ? "touched" : "untouched"};`)
+        console.log(`${questions[i].index}. Question: ${(questions[i].touched) ? "touched" : "untouched"}; val= ${questions[i].val}`)
         scoreHandler();
     });
     questions[i].inputObj.addEventListener("touchend", function(){
@@ -127,7 +123,7 @@ function scoreHandler(){
 /* test eval */
 
 function getResults(q){
-
+    console.log(`getResults(questions)`)
     function Reverse(n){
         return 8-n
     }
@@ -136,10 +132,11 @@ function getResults(q){
         if (typeof qn === typeof 0) {
             return q[qn].val;
         } else if (typeof qn === typeof "string" && (qn.length === 2 || qn.length === 3)) {
-            array = qn.split("");
+            let array = qn.split("");
             if (array[0] === "R" || array[0] === "r") {
-                if (typeof array[2] === typeof 0) {
+                if (array.length === 3) {
                     array[1] = array[1] + array[2];
+                    array.pop();
                 }
                 return Reverse(q[parseInt(array[1])].val);
             } else {
@@ -154,10 +151,16 @@ function getResults(q){
         n3 = getVal(q3);
         n4 = getVal(q4);
         n5 = getVal(q5);
-        return (n1+n2+n3+n4+n5)/(35)
+        return (n1+n2+n3+n4+n5-5)/(30)
     }
 
-    const results = {
+    function updateQuestions(q){
+        q.forEach((e, i) => {
+            e.val = inputs[i-1].valueAsNumber; 
+        })
+    }
+
+    let results = {
         fearfullness: {
             fearOfPeople: getSum("R1", 12, 30, 47, 54, q),
             nonsocialFear: getSum(6, "R19", 24, "R38", "R58"),
@@ -200,7 +203,6 @@ function getResults(q){
         return Math.round(result*100) + "%<br>"
     }
     
-    console.log(((Reverse(q[1].val)+q[12].val+q[30].val+q[47].val+q[54].val)/(35))===(getSum("R1", 12, 30, 47, 54, q)));
     console.log(results);
 
 
