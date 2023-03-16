@@ -239,5 +239,3 @@ function getResults(q){
     " Prey Drive: " + display(results.aggressionTowardsAnimals.preyDrive) +
     " Dominance over Dogs: " + display(results.aggressionTowardsAnimals.dominanceOverDogs);
 }
-
-touchAll(-1);
