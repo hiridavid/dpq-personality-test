@@ -118,7 +118,18 @@ function scoreHandler(){
     }
 }
 
+/* Buttons */
 
+function highlight(){
+    alert("Too much work naah not coding that")
+}
+
+function touchAll(offset=0){
+    for (let i = 1; i < questions.length+offset; i++){
+        questions[i].touched = true;
+        scoreHandler();
+    }
+}
 
 /* test eval */
 
@@ -228,3 +239,5 @@ function getResults(q){
     " Prey Drive: " + display(results.aggressionTowardsAnimals.preyDrive) +
     " Dominance over Dogs: " + display(results.aggressionTowardsAnimals.dominanceOverDogs);
 }
+
+touchAll(-1);
