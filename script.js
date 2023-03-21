@@ -1,12 +1,59 @@
 
 
+let questions = [false]
+document.querySelectorAll("input[name='score-input']").forEach(e=>{
+    questions.push(e);
+})
+console.log(questions);
+console.log(questions[3].dataset.touched);
+/* 
+questions[i].index = i
+questions[i].inputObj = questions[i]
+questions[i].val = questions[i].valueAsNumber
+questions[i].touched = data-touched != "" ?
+ */
+
+
+const scoreObj = document.getElementById("score");
+const resultParagraph = document.querySelector("div#resultsBox>p#results");
+const hintBox = document.querySelector("#hint");
+const hint = document.querySelector("#hint>span");
+
+/* feedback */
+
+for (let i = 1; i < questions.length; i++) {
+    questions[i].addEventListener("click", function(){
+        questions[i].setAttribute("data-touched","true");
+        console.log(`${i}. Question: ${(questions[i].dataset.touched != "") ? "touched" : "untouched"}; val= ${questions[i].valueAsNumber}`)
+        scoreHandler();
+    });
+    questions[i].addEventListener("touchstart", function(){
+        questions[i].setAttribute("data-touched","true");
+        console.log(`${i}. Question: ${(questions[i].dataset.touched != "") ? "touched" : "untouched"}; val= ${questions[i].valueAsNumber}`)
+        scoreHandler();
+    });
+}
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+/* ---------------------------------------------------------------------------------------------------- */
 
 /* Init */
+
+/* 
 
 const inputs = document.getElementsByName("score-input");
 const scoreObj = document.getElementById("score");
@@ -30,10 +77,13 @@ inputs.forEach((element, i) => {
     questions.push(new Question(element, i+1));
 });
 
-console.log(questions)
+
+
+*/
 
 /* UX */
 
+/* 
 let touchY = undefined;
 let touchX = undefined;
 let swipeTreshold = 50;
@@ -54,8 +104,8 @@ window.addEventListener("touchmove", e => {
         const swipedX = Math.abs(e.changedTouches[0].pageX - touchX); //the X distance between the original touch and your finger now
         if (swipedY > swipedX) {
             target.style.pointerEvents = "none";
-            /* id = parseInt(target.id.split("").splice(5, 7).join(""));
-            questions[id].touched = false; */
+            //id = parseInt(target.id.split("").splice(5, 7).join(""));
+            //questions[id].touched = false;
         }
     }
 })
@@ -67,6 +117,7 @@ window.addEventListener("touchend", e => {
     touchX = undefined;
     target = undefined;
 })
+*/
 
 /* display */
 
@@ -75,19 +126,6 @@ window.addEventListener("touchend", e => {
 }); */
 
 /* feedback */
-
-for (let i = 1; i < questions.length; i++) {
-    questions[i].inputObj.addEventListener("click", function(){
-        questions[i].touched=true;
-        console.log(`${questions[i].index}. Question: ${(questions[i].touched) ? "touched" : "untouched"}; val= ${questions[i].val}`)
-        scoreHandler();
-    });
-    questions[i].inputObj.addEventListener("touchend", function(){
-        questions[i].touched=true;
-        console.log(`${questions[i].index}. Question: ${(questions[i].touched) ? "touched" : "untouched"};`)
-        scoreHandler();
-    });
-}
 
 function scoreHandler(){
     let score = 0;
