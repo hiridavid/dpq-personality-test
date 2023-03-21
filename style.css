@@ -186,7 +186,7 @@ input[type="range"] {
     
     border-radius: 18px;
     background: none;
-    opacity: .5;
+    opacity: 1;
     
     touch-action: none;
     position: absolute;
@@ -202,7 +202,7 @@ input[type="range"]::-webkit-slider-thumb{
     width: var(--thumb);
     border-radius: 50%;
     background: var(--thumb-url);
-    background-color: rgba(249, 172, 57, 0.29);
+    /* background-color: rgba(249, 172, 57, 0.29); */
     cursor: ew-resize;
 }
 
@@ -212,7 +212,7 @@ input[type="range"]::-moz-range-thumb {
     width: var(--thumb);
     border-radius: 50%;
     background: var(--thumb-url);
-    background-color: rgba(249, 172, 57, 0.29);
+    /* background-color: rgba(249, 172, 57, 0.29); */
     border: none;
     cursor: ew-resize;
     position: absolute;
