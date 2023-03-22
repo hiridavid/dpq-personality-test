@@ -1,6 +1,6 @@
 
 
-//-----[ init ]---
+//----------------[ init ]----
 
 let questions = [
     {
@@ -13,25 +13,19 @@ let questions = [
 document.querySelectorAll("input[name='score-input']").forEach(e=>{
     questions.push(e);
 })
-console.log(questions);
-/* 
-questions[i].index === i
-questions[i].inputObj === questions[i]
-questions[i].val === questions[i].valueAsNumber
-questions[i].touched === data-touched !== "" ?
-*/
+/* console.log(questions); */
 
 const resultParagraph = document.querySelector("div#resultsBox>p#results");
 const scoreObj = document.getElementById("score");
 const hintBox = document.querySelector("#hint");
 const hint = document.querySelector("#hint>span");
 
-//-----[ feedback ]---
+//----------------[ feedback ]----
 
 for (let i = 1; i < questions.length; i++) {
     questions[i].addEventListener("click", function(){
-        questions[i].dataset.touched = "true"; //setAttribute("data-touched","true");
-        console.log(`${i}. Question: ${(questions[i].dataset.touched !== "") ? "touched" : "untouched"}; val= ${questions[i].valueAsNumber}`);
+        questions[i].dataset.touched = "true";
+        /* console.log(`${i}. Question: ${(questions[i].dataset.touched !== "") ? "touched" : "untouched"} via Mouse; val= ${questions[i].valueAsNumber}`); */
         let cL = questions[i].parentElement.classList;
         if (cL.contains("highlighted")) {
             cL.remove("highlighted");
@@ -40,8 +34,8 @@ for (let i = 1; i < questions.length; i++) {
         scoreHandler(questions, resultParagraph, scoreObj, hintBox, hint);
     });
     questions[i].addEventListener("touchstart", function(){
-        questions[i].dataset.touched = "true"; //setAttribute("data-touched","true");
-        console.log(`${i}. Question: ${(questions[i].dataset.touched !== "") ? "touched" : "untouched"}; val= ${questions[i].valueAsNumber}`);
+        questions[i].dataset.touched = "true";
+        /* console.log(`${i}. Question: ${(questions[i].dataset.touched !== "") ? "touched" : "untouched"} via TouchScreen; val= ${questions[i].valueAsNumber}`); */
         let cL = questions[i].parentElement.classList;
         if (cL.contains("highlighted")) {
             cL.remove("highlighted");
@@ -93,12 +87,12 @@ function debug(offset=0){
         questions[i].valueAsNumber = Math.floor(Math.random() *6.99 +1);
         questions[i].dataset.touched = "true";
     }
-    let rndi = Math.floor(Math.random() *(74.99-offset) +1) 
-    console.log(`${questions.length-1-offset} items touched. Question ${rndi} value: ${questions[rndi].value}`)
+    /* let rndi = Math.floor(Math.random() *(74.99-offset) +1) 
+    console.log(`${questions.length-1-offset} items touched. Question ${rndi} value: ${questions[rndi].value}`) */
     scoreHandler(questions, resultParagraph, scoreObj, hintBox, hint);
 }
 
-//-----[ buttons ]---
+//----------------[ buttons ]----
 
 function highlight(){
     let untouchedArr = questions.filter(e => {return e.dataset.touched === ""});
@@ -106,8 +100,8 @@ function highlight(){
     untouchedArr.forEach(e => {
         e.parentElement.classList.remove("border-top", "border-bottom", "border-secondary");
         e.parentElement.classList.add("highlighted");
-        console.log(e.parentElement)
-        console.log(e.parentElement.classList)
+        /* console.log(e.parentElement)
+        console.log(e.parentElement.classList) */
     });
 
     untouchedArr[0].parentElement.previousElementSibling.scrollIntoView();
@@ -125,14 +119,14 @@ function touchAll(offset=0){
     scoreHandler(questions, resultParagraph, scoreObj, hintBox, hint);
 }
 
-//-----[ UX ]---
+//----------------[ UX ]----
 
 
 
-//-----[ test eval ]---
+//----------------[ test eval ]----
 
 function getResults(q, write){
-    console.log(`getResults(questions)`)
+    /* console.log(`getResults(questions)`) */
 
     function Reverse(n){
         return 8-n
@@ -202,13 +196,11 @@ function getResults(q, write){
     results.activityOrExcitability.localScore = (results.activityOrExcitability.excitability + results.activityOrExcitability.playfulness + results.activityOrExcitability.activeEngagement + results.activityOrExcitability.companionability) /4;
     results.responsivenessToTraining.localScore = (results.responsivenessToTraining.trainability + results.responsivenessToTraining.controllability) /2;
     results.aggressionTowardsAnimals.localScore = (results.aggressionTowardsAnimals.aggressionTowardsDogs + results.aggressionTowardsAnimals.preyDrive + results.aggressionTowardsAnimals.dominanceOverDogs) /3;
+    /* console.log(results); */
 
     function display(result){
         return Math.round(result*100) + "%<br>"
     }
-    
-    console.log(results);
-
 
     write.innerHTML =
     "Fearfullness — " + display(results.fearfullness.localScore) +
@@ -238,39 +230,14 @@ function getResults(q, write){
 
 
 
-/* ---------------------------------------------------------------------------------------------------- */
-
-/* Init */
-
-/* 
-
-const inputs = document.getElementsByName("score-input");
-const scoreObj = document.getElementById("score");
-const resultParagraph = document.querySelector("div#resultsBox>p#results");
-const hintBox = document.querySelector("#hint");
-const hint = document.querySelector("#hint>span");
-let questions = [undefined];
-
-console.log(inputs);
-
-class Question {
-    constructor(inputObj, index){
-        this.index = index;
-        this.inputObj = inputObj;
-        this.val = inputObj.valueAsNumber;
-        this.touched = false;
-    }
-}
-
-inputs.forEach((element, i) => {
-    questions.push(new Question(element, i+1));
-});
+// ----------------------------------------------------------------[ deprecated ]-
+// shelved code for features that were declined but
+// might see light again in a future update
+// --------------------------------/
 
 
 
-*/
-
-/* UX */
+//----------------[ UX ]----
 
 /* 
 let touchY = undefined;
@@ -307,31 +274,3 @@ window.addEventListener("touchend", e => {
     target = undefined;
 })
 */
-
-/* display */
-
-/* questions[1].addEventListener("input", e=>{
-    console.log(e.value);
-}); */
-
-/* feedback */
-
-        /* 
-        if (untouchedArr.length > 2) {
-            hintBox.style.display = "block";
-            hint.innerHTML = `Answers ${untouchedArr.slice(0, untouchedArr.length-1).join(', ')} & ${untouchedArr.pop()} are missing.`;
-        } else if (untouchedArr.length === 2) {
-            hintBox.style.display = "block";
-            hint.innerHTML = `Answers ${untouchedArr[0]} & ${untouchedArr[1]} are missing.`;
-        } else if (untouchedArr.length === 1) {
-            hintBox.style.display = "block";
-            hint.innerHTML = `Answer ${untouchedArr[0]} is missing.`;
-        } else {
-            hintBox.style.display = "none";
-        }
-        */
-
-
-
-/* test eval */
-

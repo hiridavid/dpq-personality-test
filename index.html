@@ -4,12 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="src/favicon.ico" type="image/x-icon">
+
     <title>DPQ Personality Test</title>
 </head>
+
 <body class="font-DEFAULT">
+
     <!-- HEADER counts score & holds title -->
     <header class="row align-items-center p-2 border-bottom border-secondary fixed-top shadow">
         <img class="col" height="50px" src="src/logo-title.svg" alt="DPQ Personality Test">
@@ -20,11 +24,13 @@
     </header>
 
 
-    <section class="container-md">
+    <!-- MAIN sets page width for details, question cards and results -->
+    <section role="main" class="container-md">
         <div class="row align-items-center p-2">
             <img class="col-6" height="50px" src="src/logo-title.svg" alt="">
         </div>
 
+        <!-- DETAILS provide context, credits, instructions & privacy policy to user -->
         <details class="p-3 mt-3 mb-2">
             <summary>Welcome!</summary>
             <p>The <span class="highlight"><a href="https://gosling.psy.utexas.edu/scales-weve-developed/dog-personality-questionnaire-dpq/">DPQ Personality Test (test)</a></span> is an advanced behaviour test developed by Jones, A. C. and in collaboration with Amanda Jones in 2009 as a Ph.D. Thesis in the University of Texas, Austin. This online form (form), based on the test, was developed by Hiri Dávid in 2023 in Örbottyán, Hungary. The form is a non-commercial modification of the test and can not accurately replace the original, only display a close approximation on a more user-friendly interface.</p>
@@ -32,11 +38,11 @@
             <p class="mb-0">Your <span class="highlight"><a href="#resultsBox">Results</a></span> are calculated automatically. We do not store any user data. Please screenshot your results (mobile) or download the webpage (Ctrl+S on PC) in order to save & share them.</p>
         </details>
 
-        
-        <!-- TEMPLATE: (article.mb-2.pt-2.px-3.border-top.border-bottom.border-secondary>label[for='$']{$. Question.}+div.d-flex.justify-content-between.font-TITLE>p.text-start{Strongly<br>Disagree}+p.text-end{Strongly<br>Agree}^input:range[name='score-input'][id='$'][min='1'][max='7'][data-touched='']+hr) -->
 
         
-        
+       <!-- QUESTION CARDS are where input is given. They can be generated using the VSCode Emmet template below.
+            TEMPLATE: (article.mb-2.pt-2.px-3.border-top.border-bottom.border-secondary>label[for='$']{$. Question.}+div.d-flex.justify-content-between.font-TITLE>p.text-start{Strongly<br>Disagree}+p.text-end{Strongly<br>Agree}^input:range[name='score-input'][id='$'][min='1'][max='7'][data-touched='']+hr) -->
+
         <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
             <label for="1">1. Relaxed when greeting people.</label>
             <div class="d-flex justify-content-between font-TITLE">
@@ -714,6 +720,7 @@
         </article>
 
 
+        <!-- RESULTS is where any feedback & test results are displayed -->
         <div id="resultsBox" class="row pt-2 px-3">
             <h3>Results</h3>
             <p id="hint"><span></span><br>
@@ -748,9 +755,7 @@
                  Prey Drive: <br>
                  Dominance over Dogs: <br>
             </p>
-        </div>
-
-        
+        </div> 
     </section>
     <script src="script.js"></script>
 </body>
