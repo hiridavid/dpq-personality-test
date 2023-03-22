@@ -116,6 +116,11 @@ function highlight(){
 function touchAll(offset=0){
     for (let i = 1; i < questions.length-offset; i++) {
         questions[i].dataset.touched = "true";
+        let cL = questions[i].parentElement.classList;
+        if (cL.contains("highlighted")) {
+            cL.remove("highlighted");
+            cL.add("border-top", "border-bottom", "border-secondary");
+        }
     }
     scoreHandler(questions, resultParagraph, scoreObj, hintBox, hint);
 }
