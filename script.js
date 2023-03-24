@@ -227,6 +227,14 @@ function getResults(q, plainText, bars){
     
     /* let resultList = [].concat(...resultArray); */
 
+    let fearofpeopleX = bars[1].nextElementSibling.offsetLeft + bars[1].nextElementSibling.offsetWidth;
+    console.log(fearofpeopleX);
+    let percentX = bars[1].parentElement.lastElementChild.offsetLeft;
+    console.log(percentX);
+    if (percentX <= fearofpeopleX) {
+        bars[1].parentElement.lastElementChild.style.marginLeft+=(fearofpeopleX-percentX);
+        console.log(`margin-left: ${bars[1].parentElement.lastElementChild.style.marginLeft}`);
+    }
 
     
 

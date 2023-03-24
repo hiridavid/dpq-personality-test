@@ -252,7 +252,6 @@ div.progress>div{
 }
 
 div.progress>span{
-    position:absolute;
     color:var(--c-light);
     /* -webkit-text-stroke: 1px black; */
     text-shadow:
@@ -269,6 +268,14 @@ div.progress>span{
     padding-left: 0.3rem;
 }
 
+div.progress-bar+span{
+    position: absolute;
+}
 div.progress>span:last-child{
-    position:relative;
+    
+    margin-left: -40px
+    
+    
+    
+    
 }
