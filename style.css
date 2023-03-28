@@ -1,5 +1,6 @@
 :root{
     --c-main: #F9AC39;
+    --c-main-subtle: #ffc36a;
     --c-inv: #0653c6;
     --c-inv-subtle: #042557;
     --c-dark: #2C1B02;
@@ -236,19 +237,35 @@ input[type=range]::-webkit-slider-runnable-track  {
 div.progress{
     background-color: var(--c-dark-subtle);
     margin-bottom: calc(.5rem + var(--res-h) * .2);
+    margin-left: 1rem;
+    
     height: var(--res-h);
     border-radius: calc(var(--res-h) * .5);
     box-shadow: inset 0px 0px 0px 1px var(--c-light);
     border: 1px solid var(--c-dark);
+    
 }
 
 div.progress.HEAD{
-    margin-top: calc(.5rem + var(--res-h) * .2);
+    background-color: var(--c-dark-subtle);
+    margin-top: calc(1rem + var(--res-h) * 1.5 * .2);
+    height: calc(var(--res-h) * 1.5);
+    border-radius: calc(var(--res-h) * 1.5 * .5);
+    box-shadow: inset 0px 0px 0px 1px var(--c-light);
+    border: 1px solid var(--c-dark);
+    margin-left: 0;
+    
 }
 
+
 div.progress>div{
-    background-color: var(--c-main);
+    background-color: var(--c-main-subtle);
     border-radius: calc(var(--res-h) * .5);
+}
+
+div.progress.HEAD>div{
+    background-color: var(--c-main);
+    border-radius: calc(var(--res-h) * 1.5 * .5);
 }
 
 div.progress>span{
@@ -265,17 +282,28 @@ div.progress>span{
     -1px  0   0 var(--c-dark);
 
     align-self: center;
-    padding-left: 0.3rem;
-}
-
-div.progress-bar+span{
+    padding-left: .5rem;
     position: absolute;
 }
+
+div.progress.HEAD>span{
+    font-family: 'Hammersmith One';
+    font-size: 18px;
+    
+    color: var(--c-light);
+    text-shadow:
+    -1px -1px 0 var(--c-dark),
+     0   -1px 0 var(--c-dark),
+     1px -1px 0 var(--c-dark),
+     1px  0   0 var(--c-dark),
+     1px  1px 0 var(--c-dark),
+     0    1px 0 var(--c-dark),
+    -1px  1px 0 var(--c-dark),
+    -1px  0   0 var(--c-dark);
+}
+
 div.progress>span:last-child{
-    
-    margin-left: -40px
-    
-    
-    
-    
+    right: 10%;
+    text-align: end;
+    margin-right: calc(var(--res-h) * .5);
 }
