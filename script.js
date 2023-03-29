@@ -16,11 +16,33 @@ document.querySelectorAll("input[name='score-input']").forEach(e=>{
 /* console.log(questions); */
 
 const resultParagraph = document.querySelector("div#resultsBox>p#results");
+const resultBars = document.querySelector("div#resultsBox>div#progressBars");
 const scoreObj = document.getElementById("score");
 const hintBox = document.querySelector("#hint");
 const hint = document.querySelector("#hint>span");
 const displayBars = document.querySelectorAll("div.progress-bar");
-console.log(displayBars);
+const labels = [
+    "Fearfullness — ", 
+    "Fear of People: ",
+    "Non-social Fear: ", 
+    "Fear of Dogs: ", 
+    "Fear of Handling: ",
+    "Aggression towards People — ", 
+    "General Aggression: ", 
+    "Situational Aggression: ",
+    "Activity & Excitability — ", 
+    "Excitability: ", 
+    "Playfullness: ", 
+    "Active Engagement: ", 
+    "Companionability: ",
+    "Responsiveness to Training — ", 
+    "Trainability: ", 
+    "Controllability: ",
+    "Aggression towards Animals — ", 
+    "Aggression towards Dogs: ", 
+    "Prey Drive: ", 
+    "Dominance over Dogs: ",
+];
 
 //----------------[ feedback ]----
 
@@ -33,7 +55,7 @@ for (let i = 1; i < questions.length; i++) {
             cL.remove("highlighted");
             cL.add("border-top", "border-bottom", "border-secondary");
         }
-        scoreHandler(questions, resultParagraph, scoreObj, hintBox, hint, displayBars);
+        scoreHandler(questions, resultParagraph, scoreObj, hintBox, hint, displayBars, labels);
     });
     questions[i].addEventListener("touchstart", function(){
         questions[i].dataset.touched = "true";
@@ -43,18 +65,18 @@ for (let i = 1; i < questions.length; i++) {
             cL.remove("highlighted");
             cL.add("border-top", "border-bottom", "border-secondary");
         }
-        scoreHandler(questions, resultParagraph, scoreObj, hintBox, hint, displayBars);
+        scoreHandler(questions, resultParagraph, scoreObj, hintBox, hint, displayBars, labels);
     });
 }
 
-function scoreHandler(questions=questions, resultParagraph=resultParagraph, scoreObj=scoreObj, hintBox=hintBox, hint=hint, displayBars=displayBars){
+function scoreHandler(questions=questions, resultParagraph=resultParagraph, scoreObj=scoreObj, hintBox=hintBox, hint=hint, displayBars=displayBars, labels=labels){
     let score = 0;
     for (let i = 1; i < questions.length; i++) {
         if (questions[i].dataset.touched !== "") score++;
     }
     scoreObj.innerHTML = `${score}/75`
 
-    if (score>=75) getResults(questions, resultParagraph, displayBars);
+    if (score>=75) getResults(questions, resultParagraph, displayBars, labels);
     if (score>=50) {
         let untouchedArr = [];
         for (let i = 1; i < questions.length; i++) {
@@ -91,7 +113,7 @@ function debug(offset=0){
     }
     /* let rndi = Math.floor(Math.random() *(74.99-offset) +1) 
     console.log(`${questions.length-1-offset} items touched. Question ${rndi} value: ${questions[rndi].value}`) */
-    scoreHandler(questions, resultParagraph, scoreObj, hintBox, hint, displayBars);
+    scoreHandler(questions, resultParagraph, scoreObj, hintBox, hint, displayBars, labels);
 }
 
 //----------------[ buttons ]----
@@ -118,7 +140,7 @@ function touchAll(offset=0){
             cL.add("border-top", "border-bottom", "border-secondary");
         }
     }
-    scoreHandler(questions, resultParagraph, scoreObj, hintBox, hint, displayBars);
+    scoreHandler(questions, resultParagraph, scoreObj, hintBox, hint, displayBars, labels);
 }
 
 //----------------[ UX ]----
@@ -131,7 +153,7 @@ document.addEventListener("wheel", (e)=>{
 
 //----------------[ test eval ]----
 
-function getResults(q, plainText, bars){
+function getResults(q, plainText, bars, labels){
     /* console.log(`getResults(questions)`) */
 
     function Reverse(n){
@@ -162,6 +184,10 @@ function getResults(q, plainText, bars){
         n4 = getVal(q4, q);
         n5 = getVal(q5, q);
         return (n1+n2+n3+n4+n5-5)/(30)
+    }
+
+    function display(result){
+        return Math.round(result*100) + "%";
     }
 
     let results = {
@@ -205,28 +231,37 @@ function getResults(q, plainText, bars){
     /* console.log(results); */
 
 
+    // get array of values from object
     function getValueList(object){
         let resultArray = [];
         Object.values(object).forEach((e)=>{
             resultArray.push(Object.values(e));
-            
         });
         return [].concat(...resultArray);
     }
 
     let resultList = getValueList(results);
 
-    console.log(resultList);
-    console.log(bars);
-
     resultList.forEach((e, i)=>{
         bars[i].style.width = display(e);
-        bars[i].parentElement.lastElementChild.innerHTML = display(e);
+        bars[i].nextElementSibling.firstElementChild.innerHTML = labels[i];
+        bars[i].nextElementSibling.lastElementChild.innerHTML = display(e);
     });
 
+    resultBars.classList.remove("HIDDEN")
     
-    /* let resultList = [].concat(...resultArray); */
+    plainText.innerHTML = "";
+    labels.forEach((e, i)=>{
+        if (e.charAt(e.length-2)=== ":")
+            plainText.innerHTML += "  " + e + display(resultList[i]) + "<br>";
+        else
+            plainText.innerHTML += "<br>" + e + display(resultList[i]) + "<br>";
+    });
 
+    plainText.classList.remove("HIDDEN");
+    placeholder.style.display = "none";
+
+    /* 
     let fearofpeopleX = bars[1].nextElementSibling.offsetLeft + bars[1].nextElementSibling.offsetWidth;
     console.log(fearofpeopleX);
     let percentX = bars[1].parentElement.lastElementChild.offsetLeft;
@@ -234,41 +269,12 @@ function getResults(q, plainText, bars){
     if (percentX <= fearofpeopleX) {
         bars[1].parentElement.lastElementChild.style.marginLeft+=(fearofpeopleX-percentX);
         console.log(`margin-left: ${bars[1].parentElement.lastElementChild.style.marginLeft}`);
-    }
+    }*/
 
     
-
-    
-
-    function display(result){
-        return Math.round(result*100) + "%";
-    }
-
-    plainText.innerHTML =
-    "Fearfullness — " + display(results.fearfullness.localScore) +
-    "<br>  Fear of People: " + display(results.fearfullness.fearOfPeople) +
-    "<br>  Non-social Fear: " + display(results.fearfullness.nonsocialFear) +
-    "<br>  Fear of Dogs: " + display(results.fearfullness.fearOfDogs) +
-    "<br>  Fear of Handling: " + display(results.fearfullness.fearOfHandling) +
-    "<br><br>Aggression towards People — " + display(results.aggressionTowardsPeople.localScore) +
-    "<br>  General Aggression: " + display(results.aggressionTowardsPeople.generalAggression) +
-    "<br>  Situational Aggression: " + display(results.aggressionTowardsPeople.situationalAggression) +
-    "<br><br>Activity & Excitability — " + display(results.activityOrExcitability.localScore) +
-    "<br>  Excitability: " + display(results.activityOrExcitability.excitability) +
-    "<br>  Playfullness: " + display(results.activityOrExcitability.playfulness) +
-    "<br>  Active Engagement: " + display(results.activityOrExcitability.activeEngagement) +
-    "<br>  Companionability: " + display(results.activityOrExcitability.companionability) +
-    "<br><br>Responsiveness to Training — " + display(results.responsivenessToTraining.localScore) +
-    "<br>  Trainability: " + display(results.responsivenessToTraining.trainability) +
-    "<br>  Controllability: " + display(results.responsivenessToTraining.controllability) +
-    "<br><br>Aggression towards Animals — " + display(results.aggressionTowardsAnimals.localScore) +
-    "<br>  Aggression towards Dogs: " + display(results.aggressionTowardsAnimals.aggressionTowardsDogs) +
-    "<br>  Prey Drive: " + display(results.aggressionTowardsAnimals.preyDrive) +
-    "<br>  Dominance over Dogs: " + display(results.aggressionTowardsAnimals.dominanceOverDogs);
 }
 
-debug();
-
+debug(1);
 
 
 

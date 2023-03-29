@@ -724,7 +724,7 @@
 
 
         <!-- RESULTS is where any feedback & test results are displayed -->
-        <div id="resultsBox" class="row pt-2 px-3">
+        <div id="resultsBox" class="row pt-2 pb-5 px-3">
             <h3>Results</h3>
             <p id="hint"><span></span><br>
                 Please touch the sliders to register an answer, even if it is in the correct position.<br>
@@ -733,126 +733,132 @@
                 <hr class="my-2">
             </p>
 
-            <!-- (div.progress.px-0.col-12.col-sm-6[role='progressbar']>div.progress-bar[style='width: 0%']+span+span{0%}) -->
-            <div id="progressBars" class="col-12 col-sm-8 col-md-6 col-xl-4">
-                <!-- <div class="progress px-0" role="progressbar">
-                    <div id="fearfullness" class="progress-bar" style="width: 15%">25%</div>
+            <!-- TEMPLATE: (div.progress[role='progressbar'][aria-label=''][aria-valuenow='0'][aria-valuemin='0'][aria-valuemax='100']>div.progress-bar[style='width: 0%']+div.PROGRESS_LABEL>span+span{0%}) -->
+            <div id="progressBars" class="col-12 col-md-6 HIDDEN">
+                <div class="progress HEAD" role="progressbar" aria-label="" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 50%"></div>
+                    <div class="PROGRESS_LABEL">
+                        <span>Fearfullness —</span><span>0%</span>
+                    </div>
                 </div>
-
-                <div class="progress px-0" role="progressbar" aria-label="" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
-                    <div id="displayFearfullness" class="progress-bar" style="width: 85%"></div>
-                    <span>Fearfullness: 85%</span>
-                </div> -->
-                
-                <div class="progress HEAD px-0" role="progressbar">
-                    <div class="progress-bar" style="width: 0%"></div>
-                    <span>Fearfullness —</span>
-                    <span>0%</span>
+                <div class="progress" role="progressbar" aria-label="" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 50%"></div>
+                    <div class="PROGRESS_LABEL">
+                        <span>Fear of People:</span><span>0%</span>
+                    </div>
                 </div>
-                <div class="progress px-0" role="progressbar">
-                    <div class="progress-bar" style="width: 0%"></div>
-                    <span>Fear of People:</span>
-                    <span>0%</span>
+                <div class="progress" role="progressbar" aria-label="" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 50%"></div>
+                    <div class="PROGRESS_LABEL">
+                        <span>Non-social Fear:</span><span>0%</span>
+                    </div>
                 </div>
-                <div class="progress px-0" role="progressbar">
-                    <div class="progress-bar" style="width: 0%"></div>
-                    <span>Non-social Fear:</span>
-                    <span>0%</span>
+                <div class="progress" role="progressbar" aria-label="" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 50%"></div>
+                    <div class="PROGRESS_LABEL">
+                        <span>Fear of Dogs:</span><span>0%</span>
+                    </div>
                 </div>
-                <div class="progress px-0" role="progressbar">
-                    <div class="progress-bar" style="width: 0%"></div>
-                    <span>Fear of Dogs:</span>
-                    <span>0%</span>
+                <div class="progress" role="progressbar" aria-label="" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 50%"></div>
+                    <div class="PROGRESS_LABEL">
+                        <span>Fear of Handling:</span><span>0%</span>
+                    </div>
                 </div>
-                <div class="progress px-0" role="progressbar">
-                    <div class="progress-bar" style="width: 0%"></div>
-                    <span>Fear of Handling:</span>
-                    <span>0%</span>
+                <div class="progress HEAD" role="progressbar" aria-label="" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 50%"></div>
+                    <div class="PROGRESS_LABEL">
+                        <span>Aggression towards People —</span><span>0%</span>
+                    </div>
                 </div>
-                
-                <div class="progress HEAD px-0" role="progressbar">
-                    <div class="progress-bar" style="width: 0%"></div>
-                    <span>Aggression towards People —</span>
-                    <span>0%</span>
+                <div class="progress" role="progressbar" aria-label="" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 50%"></div>
+                    <div class="PROGRESS_LABEL">
+                        <span>General Aggression:</span><span>0%</span>
+                    </div>
                 </div>
-
-                <div class="progress px-0" role="progressbar">
-                    <div class="progress-bar" style="width: 0%"></div>
-                    <span>General Aggression:</span>
-                    <span>0%</span>
+                <div class="progress" role="progressbar" aria-label="" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 50%"></div>
+                    <div class="PROGRESS_LABEL">
+                        <span>Situational Aggression:</span><span>0%</span>
+                    </div>
                 </div>
-                <div class="progress px-0" role="progressbar">
-                    <div class="progress-bar" style="width: 0%"></div>
-                    <span>Situational Aggression:</span>
-                    <span>0%</span>
+                <div class="progress HEAD" role="progressbar" aria-label="" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 50%"></div>
+                    <div class="PROGRESS_LABEL">
+                        <span>Activity &amp; Excitability —</span><span>0%</span>
+                    </div>
                 </div>
-                
-                <div class="progress HEAD px-0" role="progressbar">
-                    <div class="progress-bar" style="width: 0%"></div>
-                    <span>Activity & Excitability —</span>
-                    <span>0%</span>
+                <div class="progress" role="progressbar" aria-label="" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 50%"></div>
+                    <div class="PROGRESS_LABEL">
+                        <span>Excitability:</span><span>0%</span>
+                    </div>
                 </div>
-                <div class="progress px-0" role="progressbar">
-                    <div class="progress-bar" style="width: 0%"></div>
-                    <span>Excitability:</span>
-                    <span>0%</span>
+                <div class="progress" role="progressbar" aria-label="" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 50%"></div>
+                    <div class="PROGRESS_LABEL">
+                        <span>Playfullness:</span><span>0%</span>
+                    </div>
                 </div>
-                <div class="progress px-0" role="progressbar">
-                    <div class="progress-bar" style="width: 0%"></div>
-                    <span>Playfullness:</span>
-                    <span>0%</span>
+                <div class="progress" role="progressbar" aria-label="" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 50%"></div>
+                    <div class="PROGRESS_LABEL">
+                        <span>Active Engagement:</span><span>0%</span>
+                    </div>
                 </div>
-                <div class="progress px-0" role="progressbar">
-                    <div class="progress-bar" style="width: 0%"></div>
-                    <span>Active Engagement:</span>
-                    <span>0%</span>
+                <div class="progress" role="progressbar" aria-label="" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 50%"></div>
+                    <div class="PROGRESS_LABEL">
+                        <span>Companionability:</span><span>0%</span>
+                    </div>
                 </div>
-                <div class="progress px-0" role="progressbar">
-                    <div class="progress-bar" style="width: 0%"></div>
-                    <span>Companionability:</span>
-                    <span>0%</span>
+                <div class="progress HEAD" role="progressbar" aria-label="" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 50%"></div>
+                    <div class="PROGRESS_LABEL">
+                        <span>Responsiveness to Training —</span><span>0%</span>
+                    </div>
                 </div>
-                
-                <div class="progress HEAD px-0" role="progressbar">
-                    <div class="progress-bar" style="width: 0%"></div>
-                    <span>Responsiveness to Training —</span>
-                    <span>0%</span>
+                <div class="progress" role="progressbar" aria-label="" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 50%"></div>
+                    <div class="PROGRESS_LABEL">
+                        <span>Trainability:</span><span>0%</span>
+                    </div>
                 </div>
-                <div class="progress px-0" role="progressbar">
-                    <div class="progress-bar" style="width: 0%"></div>
-                    <span>Trainability:</span>
-                    <span>0%</span>
+                <div class="progress" role="progressbar" aria-label="" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 50%"></div>
+                    <div class="PROGRESS_LABEL">
+                        <span>Controllability:</span><span>0%</span>
+                    </div>
                 </div>
-                <div class="progress px-0" role="progressbar">
-                    <div class="progress-bar" style="width: 0%"></div>
-                    <span>Controllability:</span>
-                    <span>0%</span>
+                <div class="progress HEAD" role="progressbar" aria-label="" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 50%"></div>
+                    <div class="PROGRESS_LABEL">
+                        <span>Aggression towards Animals —</span><span>0%</span>
+                    </div>
                 </div>
-                
-                <div class="progress HEAD px-0" role="progressbar">
-                    <div class="progress-bar" style="width: 0%"></div>
-                    <span>Aggression towards Animals —</span>
-                    <span>0%</span>
+                <div class="progress" role="progressbar" aria-label="" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 50%"></div>
+                    <div class="PROGRESS_LABEL">
+                        <span>Aggression towards Dogs:</span><span>0%</span>
+                    </div>
                 </div>
-                <div class="progress px-0" role="progressbar">
-                    <div class="progress-bar" style="width: 0%"></div>
-                    <span>Aggression towards Dogs:</span>
-                    <span>0%</span>
+                <div class="progress" role="progressbar" aria-label="" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 50%"></div>
+                    <div class="PROGRESS_LABEL">
+                        <span>Prey Drive:</span><span>0%</span>
+                    </div>
                 </div>
-                <div class="progress px-0" role="progressbar">
-                    <div class="progress-bar" style="width: 0%"></div>
-                    <span>Prey Drive:</span>
-                    <span>0%</span>
-                </div>
-                <div class="progress px-0" role="progressbar">
-                    <div class="progress-bar" style="width: 0%"></div>
-                    <span>Dominance over Dogs:</span>
-                    <span>0%</span>
+                <div class="progress" role="progressbar" aria-label="" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 50%"></div>
+                    <div class="PROGRESS_LABEL">
+                        <span>Dominance over Dogs:</span><span>0%</span>
+                    </div>
                 </div>
             </div>
             
 
-            <p id="results">
+            <p id="results" class="col-12 col-lg-6 HIDDEN">
                 Fearfullness — <br>
                   Fear of People: <br>
                   Non-social Fear: <br>
@@ -878,9 +884,10 @@
                   Prey Drive: <br>
                   Dominance over Dogs: <br>
             </p>
-            <br>
-            <p> </p>
-            <br>
+
+
+
+            <p id="placeholder">Your results will show here<br>after answering all questions.</p>
         </div> 
     </section>
     <script src="script.js"></script>
