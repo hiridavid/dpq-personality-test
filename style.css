@@ -230,7 +230,7 @@ input[type=range]::-webkit-slider-runnable-track  {
 
 #progressBars{
     margin-top: calc(-1*(1rem + var(--res-h) * 1.5 * .2));
-    margin-bottom: 2rem;
+    margin-bottom: calc(2rem - 23.607px);
 }
 
 .highlighted{
@@ -331,3 +331,29 @@ input[type=range]::-webkit-slider-runnable-track  {
 #results, #progressBars{
     transition: all .8s ease-out;
 }
+
+#DISPLAY-SWITCH{
+    display:flex;
+    justify-content: center;
+}
+
+#DISPLAY-SWITCH>button{
+    display:none;
+    border-radius: 1.185rem;
+    color:var(--c-dark-subtle);
+}
+
+#DISPLAY-SWITCH>button:hover{
+    color: var(--c-dark);
+    background-color:transparent;
+    border: solid 1px var(--c-dark);
+}
+
+#DISPLAY-SWITCH>button:active{
+    color: var(--c-dark-subtle);
+    box-shadow: inset 0px 0px 8px 6px var(--c-main-subtle);
+    border: solid 1px var(--c-dark);
+    transition-duration: 100ms;
+    transition-timing-function: ease-out;
+}
+

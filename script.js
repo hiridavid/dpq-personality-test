@@ -20,6 +20,7 @@ const resultBars = document.querySelector("div#resultsBox>div#progressBars");
 const scoreObj = document.getElementById("score");
 const hintBox = document.querySelector("#hint");
 const hint = document.querySelector("#hint>span");
+const convertBtn = document.querySelector("#DISPLAY-SWITCH>button");
 const displayBars = document.querySelectorAll("div.progress-bar");
 const labels = [
     "Fearfullness — ", 
@@ -143,6 +144,43 @@ function touchAll(offset=0){
     scoreHandler(questions, resultParagraph, scoreObj, hintBox, hint, displayBars, labels);
 }
 
+function convert(btn){
+    switch (btn.innerText) {
+        case "":
+            alert("hey! you were not supposed to do that...");
+            btn.innerText = "Convert to Plain Text";
+            break;
+    
+        case "Convert to Display Bars":
+            resultParagraph.classList.add("HIDDEN");
+            resultBars.classList.remove("HIDDEN");
+            btn.innerText = "Convert to Plain Text";
+            break;
+    
+        case "Convert to Plain Text":
+            resultBars.classList.add("HIDDEN")
+            resultParagraph.classList.remove("HIDDEN");
+            btn.innerText = "Convert to Display Bars";
+            break;
+    
+        default:
+            console.log("what? how?");
+            break;
+    }
+    /* 
+    case1 unfilled form
+        display none
+        do nothing
+    case2 showing bars
+        display unset
+        innertext convert to text
+    case3 showing text
+        display unset
+        innertext conv to bars
+    
+    */
+}
+
 //----------------[ UX ]----
 
 //---disables scrolling the value away on range inputs
@@ -247,8 +285,6 @@ function getResults(q, plainText, bars, labels){
         bars[i].nextElementSibling.firstElementChild.innerHTML = labels[i];
         bars[i].nextElementSibling.lastElementChild.innerHTML = display(e);
     });
-
-    resultBars.classList.remove("HIDDEN")
     
     plainText.innerHTML = "";
     labels.forEach((e, i)=>{
@@ -258,8 +294,14 @@ function getResults(q, plainText, bars, labels){
             plainText.innerHTML += "<br>" + e + display(resultList[i]) + "<br>";
     });
 
-    plainText.classList.remove("HIDDEN");
-    placeholder.style.display = "none";
+    if (convertBtn.style.display === "") {
+        placeholder.style.display = "none";
+        resultBars.classList.remove("HIDDEN");
+        convertBtn.style.display = "block";
+    }
+    
+    
+    
 
     /* 
     let fearofpeopleX = bars[1].nextElementSibling.offsetLeft + bars[1].nextElementSibling.offsetWidth;
