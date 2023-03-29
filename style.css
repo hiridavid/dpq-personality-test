@@ -357,3 +357,6 @@ input[type=range]::-webkit-slider-runnable-track  {
     transition-timing-function: ease-out;
 }
 
+summary{
+    user-select: none;
+}

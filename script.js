@@ -13,7 +13,6 @@ let questions = [
 document.querySelectorAll("input[name='score-input']").forEach(e=>{
     questions.push(e);
 })
-/* console.log(questions); */
 
 const resultParagraph = document.querySelector("div#resultsBox>p#results");
 const resultBars = document.querySelector("div#resultsBox>div#progressBars");
@@ -112,8 +111,6 @@ function debug(offset=0){
         questions[i].valueAsNumber = Math.floor(Math.random() *6.99 +1);
         questions[i].dataset.touched = "true";
     }
-    /* let rndi = Math.floor(Math.random() *(74.99-offset) +1) 
-    console.log(`${questions.length-1-offset} items touched. Question ${rndi} value: ${questions[rndi].value}`) */
     scoreHandler(questions, resultParagraph, scoreObj, hintBox, hint, displayBars, labels);
 }
 
@@ -125,8 +122,6 @@ function highlight(){
     untouchedArr.forEach(e => {
         e.parentElement.classList.remove("border-top", "border-bottom", "border-secondary");
         e.parentElement.classList.add("highlighted");
-        /* console.log(e.parentElement)
-        console.log(e.parentElement.classList) */
     });
 
     untouchedArr[0].parentElement.previousElementSibling.scrollIntoView();
@@ -167,18 +162,6 @@ function convert(btn){
             console.log("what? how?");
             break;
     }
-    /* 
-    case1 unfilled form
-        display none
-        do nothing
-    case2 showing bars
-        display unset
-        innertext convert to text
-    case3 showing text
-        display unset
-        innertext conv to bars
-    
-    */
 }
 
 //----------------[ UX ]----
@@ -189,10 +172,47 @@ document.addEventListener("wheel", (e)=>{
         document.activeElement.blur();
 });
 
+
+//---unstuck scrolling
+let touchY = undefined;
+let touchX = undefined;
+let swipeTreshold = 50;
+let target = undefined;
+//- event listener for mobile touches
+window.addEventListener("touchstart", e => {
+    touchY = e.changedTouches[0].pageY;    //sets the x position on page of touch event to a var
+    touchX = e.changedTouches[0].pageX;    //sets the y position on page of touch event to a var
+    target = e.target;
+    console.log(target);
+    console.log(`(X: ${touchX}, Y: ${touchY})`);
+})
+
+//- event listener for swipes (change of touch position)
+window.addEventListener("touchmove", e => {
+    if (target.name==="score-input") {
+        const swipedY = Math.abs(e.changedTouches[0].pageY - touchY); //the Y distance between the original touch and your finger now
+        const swipedX = Math.abs(e.changedTouches[0].pageX - touchX); //the X distance between the original touch and your finger now
+        if (target.style.pointerEvents !== "none" && swipedY > swipeTreshold && swipedY > swipedX) {
+            console.log("scrolling, reset");
+            target.style.pointerEvents = "none";
+            target.valueAsNumber = 4;
+            target.dataset.touched = "";
+        }
+    }
+})
+
+//- event listener for ending a touch
+window.addEventListener("touchend", e => {
+    target.style.pointerEvents = "";
+    touchY = undefined;
+    touchX = undefined;
+    target = undefined;
+})
+
+
 //----------------[ test eval ]----
 
 function getResults(q, plainText, bars, labels){
-    /* console.log(`getResults(questions)`) */
 
     function Reverse(n){
         return 8-n
@@ -266,9 +286,7 @@ function getResults(q, plainText, bars, labels){
     results.activityOrExcitability.localScore = (results.activityOrExcitability.excitability + results.activityOrExcitability.playfulness + results.activityOrExcitability.activeEngagement + results.activityOrExcitability.companionability) /4;
     results.responsivenessToTraining.localScore = (results.responsivenessToTraining.trainability + results.responsivenessToTraining.controllability) /2;
     results.aggressionTowardsAnimals.localScore = (results.aggressionTowardsAnimals.aggressionTowardsDogs + results.aggressionTowardsAnimals.preyDrive + results.aggressionTowardsAnimals.dominanceOverDogs) /3;
-    /* console.log(results); */
-
-
+    
     // get array of values from object
     function getValueList(object){
         let resultArray = [];
@@ -299,68 +317,4 @@ function getResults(q, plainText, bars, labels){
         resultBars.classList.remove("HIDDEN");
         convertBtn.style.display = "block";
     }
-    
-    
-    
-
-    /* 
-    let fearofpeopleX = bars[1].nextElementSibling.offsetLeft + bars[1].nextElementSibling.offsetWidth;
-    console.log(fearofpeopleX);
-    let percentX = bars[1].parentElement.lastElementChild.offsetLeft;
-    console.log(percentX);
-    if (percentX <= fearofpeopleX) {
-        bars[1].parentElement.lastElementChild.style.marginLeft+=(fearofpeopleX-percentX);
-        console.log(`margin-left: ${bars[1].parentElement.lastElementChild.style.marginLeft}`);
-    }*/
-
-    
 }
-
-debug(1);
-
-
-
-// ----------------------------------------------------------------[ deprecated ]-
-// shelved code for features that were declined but
-// might see light again in a future update
-// --------------------------------/
-
-
-
-//----------------[ UX ]----
-
-/* 
-let touchY = undefined;
-let touchX = undefined;
-let swipeTreshold = 50;
-let target = undefined;
-//---event listener for mobile touches
-window.addEventListener("touchstart", e => {
-    touchY = e.changedTouches[0].pageY;    //sets the x position on page of touch event to a var
-    touchX = e.changedTouches[0].pageX;    //sets the y position on page of touch event to a var
-    target = e.target;
-    console.log(target);
-    console.log(`(X: ${touchX}, Y: ${touchY})`);
-})
-
-//---event listener for swipes (change of touch position)
-window.addEventListener("touchmove", e => {
-    if (target.name==="score-input") {
-        const swipedY = Math.abs(e.changedTouches[0].pageY - touchY); //the Y distance between the original touch and your finger now
-        const swipedX = Math.abs(e.changedTouches[0].pageX - touchX); //the X distance between the original touch and your finger now
-        if (swipedY > swipedX) {
-            target.style.pointerEvents = "none";
-            //id = parseInt(target.id.split("").splice(5, 7).join(""));
-            //questions[id].touched = false;
-        }
-    }
-})
-
-//---event listener for ending a touch
-window.addEventListener("touchend", e => {
-    target.style.pointerEvents = "";
-    touchY = undefined;
-    touchX = undefined;
-    target = undefined;
-})
-*/
